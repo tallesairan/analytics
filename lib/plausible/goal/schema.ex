@@ -58,4 +58,12 @@ defmodule Plausible.Goal do
     value = get_field(changeset, :event_name)
     value && String.match?(value, ~r/^.+/)
   end
+
+  def display_name(%__MODULE__{page_path: page_path}) when is_binary(page_path) do
+    "Visit " <> page_path
+  end
+
+  def display_name(%__MODULE__{event_name: name}) when is_binary(name) do
+    name
+  end
 end
