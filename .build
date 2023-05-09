@@ -158,7 +158,6 @@ PlausibleWeb.RefInspector.html
 PlausibleWeb.RemoteIp.html
 PlausibleWeb.RequireAccountPlug.html
 PlausibleWeb.RequireLoggedOutPlug.html
-PlausibleWeb.Router.Helpers.html
 PlausibleWeb.Router.html
 PlausibleWeb.SessionTimeoutPlug.html
 PlausibleWeb.Site.MembershipController.html
@@ -202,8 +201,8 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_items-9104D89B.js
-dist/sidebar_items-BED391F2.js
+dist/search_items-D62B4B30.js
+dist/sidebar_items-6F34E901.js
 index.html
 readme.html
 search.html
