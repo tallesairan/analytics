@@ -13,7 +13,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
-    <script src="dist/sidebar_items-BB09C5A1.js"></script>
+    <script src="dist/sidebar_items-8DB18DD7.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -220,7 +220,7 @@ Types
     </a>
     <h1 class="signature" translate="no">t()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/query.ex#L13" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/query.ex#L14" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -235,6 +235,7 @@ Types
           <pre translate="no"><span class="attribute">@type</span> t() :: %Plausible.Stats.Query{
   date_range: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   filters: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  imported_data_requested: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   include_imported: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   interval: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   period: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
@@ -268,7 +269,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">from(site, params)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/query.ex#L15" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/query.ex#L16" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -334,7 +335,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">include_imported?(query, site, requested?)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/query.ex#L257" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/query.ex#L260" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -406,7 +407,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">trace(query)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/query.ex#L268" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/query.ex#L271" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -421,6 +422,7 @@ Functions
           <pre translate="no"><span class="attribute">@spec</span> trace(%Plausible.Stats.Query{
   date_range: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   filters: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  imported_data_requested: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   include_imported: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   interval: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   period: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
@@ -428,6 +430,7 @@ Functions
 }) :: %Plausible.Stats.Query{
   date_range: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   filters: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  imported_data_requested: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   include_imported: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   interval: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
   period: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
