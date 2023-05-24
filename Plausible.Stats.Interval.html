@@ -13,7 +13,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
-    <script src="dist/sidebar_items-570E7876.js"></script>
+    <script src="dist/sidebar_items-F1521B8E.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -149,6 +149,16 @@ it as a <code class="inline">GROUP BY</code> clause. Possible values are <code c
 
     <div class="summary-row">
       <div class="summary-signature">
+        <a href="#default_for_date_range/1" translate="no">default_for_date_range(range)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the suggested interval for the given <a href="https://hexdocs.pm/elixir/Date.Range.html"><code class="inline">Date.Range</code></a> struct.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
         <a href="#default_for_period/1" translate="no">default_for_period(period)</a>
 
       </div>
@@ -246,6 +256,37 @@ Types
 Functions
     </h1>
     <div class="functions-list">
+<section class="detail" id="default_for_date_range/1">
+
+  <div class="detail-header">
+    <a href="#default_for_date_range/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">default_for_date_range(range)</h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/interval.ex#L56" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the suggested interval for the given <a href="https://hexdocs.pm/elixir/Date.Range.html"><code class="inline">Date.Range</code></a> struct.</p><h2 id="default_for_date_range/1-examples" class="section-heading">
+  <a href="#default_for_date_range/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
+  Examples
+</h2>
+<p>  iex&gt; Plausible.Stats.Interval.default_for_date_range(Date.range(~D[2022-01-01], ~D[2023-01-01]))
+  &quot;month&quot;</p><p>  iex&gt; Plausible.Stats.Interval.default_for_date_range(Date.range(~D[2022-01-01], ~D[2022-01-15]))
+  &quot;date&quot;</p><p>  iex&gt; Plausible.Stats.Interval.default_for_date_range(Date.range(~D[2022-01-01], ~D[2022-01-01]))
+  &quot;hour&quot;</p>
+  </section>
+</section>
 <section class="detail" id="default_for_period/1">
 
   <div class="detail-header">
@@ -346,7 +387,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">valid_by_period()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/interval.ex#L53" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/interval.ex#L81" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -368,7 +409,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">valid_for_period?(period, interval)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/interval.ex#L75" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/stats/interval.ex#L103" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
