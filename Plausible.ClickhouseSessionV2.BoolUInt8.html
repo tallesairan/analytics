@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.29.4">
     <meta name="project" content="Plausible v0.0.1">
 
-    <title>Plausible.Workers.CheckUsage — Plausible v0.0.1</title>
+    <title>Plausible.ClickhouseSessionV2.BoolUInt8 — Plausible v0.0.1</title>
     <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
 
 
@@ -102,16 +102,20 @@ Plausible
 </button>
 
 
-    <a href="https://github.com/plausible/analytics/blob/main/lib/workers/check_usage.ex#L1" title="View Source" class="icon-action" rel="help">
+    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/clickhouse_session_v2.ex#L7" title="View Source" class="icon-action" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
 
-  <span translate="no">Plausible.Workers.CheckUsage</span> 
+  <span translate="no">Plausible.ClickhouseSessionV2.BoolUInt8</span> 
   <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
 
 </h1>
 
+
+  <section id="moduledoc">
+<p>Custom type to cast Bool as UInt8</p>
+  </section>
 
 
   <section id="summary" class="details-list">
@@ -129,41 +133,21 @@ Plausible
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#check_enterprise_subscriber/2" translate="no">check_enterprise_subscriber(subscriber, billing_mod)</a>
+        <a href="#embed_as/1" translate="no">embed_as(_)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:embed_as/1"><code class="inline">Ecto.Type.embed_as/1</code></a>.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#day_of_month/1" translate="no">day_of_month(date)</a>
+        <a href="#equal?/2" translate="no">equal?(term1, term2)</a>
 
       </div>
 
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#last_day_of_month/1" translate="no">last_day_of_month(day)</a>
-
-      </div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#least/2" translate="no">least(left, right)</a>
-
-      </div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#yesterday/0" translate="no">yesterday()</a>
-
-      </div>
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:equal?/2"><code class="inline">Ecto.Type.equal?/2</code></a>.</p></div>
 
     </div>
 
@@ -181,16 +165,16 @@ Plausible
 Functions
     </h1>
     <div class="functions-list">
-<section class="detail" id="check_enterprise_subscriber/2">
+<section class="detail" id="embed_as/1">
 
   <div class="detail-header">
-    <a href="#check_enterprise_subscriber/2" class="detail-link" title="Link to this function">
+    <a href="#embed_as/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">check_enterprise_subscriber(subscriber, billing_mod)</h1>
+    <h1 class="signature" translate="no">embed_as(_)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/workers/check_usage.ex#L64" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/clickhouse_session_v2.ex#L12" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -200,103 +184,29 @@ Functions
 
   <section class="docstring">
 
-
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:embed_as/1"><code class="inline">Ecto.Type.embed_as/1</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="day_of_month/1">
+<section class="detail" id="equal?/2">
 
   <div class="detail-header">
-    <a href="#day_of_month/1" class="detail-link" title="Link to this macro">
+    <a href="#equal?/2" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this macro</span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">day_of_month(date)</h1>
+    <h1 class="signature" translate="no">equal?(term1, term2)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/workers/check_usage.ex#L20" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/clickhouse_session_v2.ex#L12" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
 
 
-      <span class="note">(macro)</span>
-
   </div>
 
   <section class="docstring">
 
-
-  </section>
-</section>
-<section class="detail" id="last_day_of_month/1">
-
-  <div class="detail-header">
-    <a href="#last_day_of_month/1" class="detail-link" title="Link to this macro">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this macro</span>
-    </a>
-    <h1 class="signature" translate="no">last_day_of_month(day)</h1>
-
-      <a href="https://github.com/plausible/analytics/blob/main/lib/workers/check_usage.ex#L11" class="icon-action" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-      <span class="note">(macro)</span>
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="least/2">
-
-  <div class="detail-header">
-    <a href="#least/2" class="detail-link" title="Link to this macro">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this macro</span>
-    </a>
-    <h1 class="signature" translate="no">least(left, right)</h1>
-
-      <a href="https://github.com/plausible/analytics/blob/main/lib/workers/check_usage.ex#L26" class="icon-action" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-      <span class="note">(macro)</span>
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="yesterday/0">
-
-  <div class="detail-header">
-    <a href="#yesterday/0" class="detail-link" title="Link to this macro">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this macro</span>
-    </a>
-    <h1 class="signature" translate="no">yesterday()</h1>
-
-      <a href="https://github.com/plausible/analytics/blob/main/lib/workers/check_usage.ex#L5" class="icon-action" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-      <span class="note">(macro)</span>
-
-  </div>
-
-  <section class="docstring">
-
-
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:equal?/2"><code class="inline">Ecto.Type.equal?/2</code></a>.</p>
   </section>
 </section>
 
