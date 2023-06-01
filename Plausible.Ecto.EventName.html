@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.29.4">
     <meta name="project" content="Plausible v0.0.1">
 
-    <title>Plausible.Mailer — Plausible v0.0.1</title>
+    <title>Plausible.Ecto.EventName — Plausible v0.0.1</title>
     <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
 
 
@@ -102,16 +102,21 @@ Plausible
 </button>
 
 
-    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/mailer.ex#L1" title="View Source" class="icon-action" rel="help">
+    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/request.ex#L1" title="View Source" class="icon-action" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
 
-  <span translate="no">Plausible.Mailer</span> 
+  <span translate="no">Plausible.Ecto.EventName</span> 
   <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
 
 </h1>
 
+
+  <section id="moduledoc">
+<p>  Custom type for event name. Accepts Strings and Integers and stores them as String. Returns
+  cast error if any other type is provided. Accepting integers is important for 404 tracking.</p>
+  </section>
 
 
   <section id="summary" class="details-list">
@@ -129,49 +134,61 @@ Plausible
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#deliver/1" translate="no">deliver(email)</a>
+        <a href="#cast/1" translate="no">cast(val)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:cast/1"><code class="inline">Ecto.Type.cast/1</code></a>.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#deliver_later/2" translate="no">deliver_later(email, opts \\ [])</a>
+        <a href="#dump/1" translate="no">dump(val)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:dump/1"><code class="inline">Ecto.Type.dump/1</code></a>.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#deliver_later!/2" translate="no">deliver_later!(email, opts \\ [])</a>
+        <a href="#embed_as/1" translate="no">embed_as(_)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:embed_as/1"><code class="inline">Ecto.Type.embed_as/1</code></a>.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#deliver_now/2" translate="no">deliver_now(email, opts \\ [])</a>
+        <a href="#equal?/2" translate="no">equal?(term1, term2)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:equal?/2"><code class="inline">Ecto.Type.equal?/2</code></a>.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#deliver_now!/2" translate="no">deliver_now!(email, opts \\ [])</a>
+        <a href="#load/1" translate="no">load(val)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:load/1"><code class="inline">Ecto.Type.load/1</code></a>.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#send/1" translate="no">send(email)</a>
+        <a href="#type/0" translate="no">type()</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:type/0"><code class="inline">Ecto.Type.type/0</code></a>.</p></div>
 
     </div>
 
@@ -189,16 +206,16 @@ Plausible
 Functions
     </h1>
     <div class="functions-list">
-<section class="detail" id="deliver/1">
+<section class="detail" id="cast/1">
 
   <div class="detail-header">
-    <a href="#deliver/1" class="detail-link" title="Link to this function">
+    <a href="#cast/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">deliver(email)</h1>
+    <h1 class="signature" translate="no">cast(val)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/mailer.ex#L2" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/request.ex#L10" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -208,27 +225,19 @@ Functions
 
   <section class="docstring">
 
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@spec</span> deliver(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
-
-      </div>
-
-
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:cast/1"><code class="inline">Ecto.Type.cast/1</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="deliver_later/2">
-
-    <span id="deliver_later/1"></span>
+<section class="detail" id="dump/1">
 
   <div class="detail-header">
-    <a href="#deliver_later/2" class="detail-link" title="Link to this function">
+    <a href="#dump/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">deliver_later(email, opts \\ [])</h1>
+    <h1 class="signature" translate="no">dump(val)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/mailer.ex#L2" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/request.ex#L15" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -238,21 +247,19 @@ Functions
 
   <section class="docstring">
 
-
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:dump/1"><code class="inline">Ecto.Type.dump/1</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="deliver_later!/2">
-
-    <span id="deliver_later!/1"></span>
+<section class="detail" id="embed_as/1">
 
   <div class="detail-header">
-    <a href="#deliver_later!/2" class="detail-link" title="Link to this function">
+    <a href="#embed_as/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">deliver_later!(email, opts \\ [])</h1>
+    <h1 class="signature" translate="no">embed_as(_)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/mailer.ex#L2" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/request.ex#L7" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -262,21 +269,19 @@ Functions
 
   <section class="docstring">
 
-
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:embed_as/1"><code class="inline">Ecto.Type.embed_as/1</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="deliver_now/2">
-
-    <span id="deliver_now/1"></span>
+<section class="detail" id="equal?/2">
 
   <div class="detail-header">
-    <a href="#deliver_now/2" class="detail-link" title="Link to this function">
+    <a href="#equal?/2" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">deliver_now(email, opts \\ [])</h1>
+    <h1 class="signature" translate="no">equal?(term1, term2)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/mailer.ex#L2" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/request.ex#L7" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -286,30 +291,19 @@ Functions
 
   <section class="docstring">
 
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@spec</span> deliver_now(<a href="https://hexdocs.pm/bamboo/2.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>(), <a href="https://hexdocs.pm/elixir/Enum.html#t:t/0">Enum.t</a>()) ::
-  {:ok, <a href="https://hexdocs.pm/bamboo/2.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>()}
-  | {:ok, <a href="https://hexdocs.pm/bamboo/2.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
-  | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
-
-      </div>
-
-
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:equal?/2"><code class="inline">Ecto.Type.equal?/2</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="deliver_now!/2">
-
-    <span id="deliver_now!/1"></span>
+<section class="detail" id="load/1">
 
   <div class="detail-header">
-    <a href="#deliver_now!/2" class="detail-link" title="Link to this function">
+    <a href="#load/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">deliver_now!(email, opts \\ [])</h1>
+    <h1 class="signature" translate="no">load(val)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/mailer.ex#L2" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/request.ex#L14" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -319,26 +313,19 @@ Functions
 
   <section class="docstring">
 
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@spec</span> deliver_now!(<a href="https://hexdocs.pm/bamboo/2.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>(), <a href="https://hexdocs.pm/elixir/Enum.html#t:t/0">Enum.t</a>()) ::
-  <a href="https://hexdocs.pm/bamboo/2.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>() | {<a href="https://hexdocs.pm/bamboo/2.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
-
-      </div>
-
-
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:load/1"><code class="inline">Ecto.Type.load/1</code></a>.</p>
   </section>
 </section>
-<section class="detail" id="send/1">
+<section class="detail" id="type/0">
 
   <div class="detail-header">
-    <a href="#send/1" class="detail-link" title="Link to this function">
+    <a href="#type/0" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">send(email)</h1>
+    <h1 class="signature" translate="no">type()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/mailer.ex#L5" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/ingestion/request.ex#L8" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -348,14 +335,7 @@ Functions
 
   <section class="docstring">
 
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@spec</span> send(<a href="https://hexdocs.pm/bamboo/2.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>()) ::
-  :ok | {:error, :hard_bounce} | {:error, :unknown_error}</pre>
-
-      </div>
-
-
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.9.5/Ecto.Type.html#c:type/0"><code class="inline">Ecto.Type.type/0</code></a>.</p>
   </section>
 </section>
 

@@ -49,6 +49,7 @@ Plausible.DataCase.html
 Plausible.DataMigration.NumericIDs.html
 Plausible.DataMigration.Repo.html
 Plausible.DataMigration.html
+Plausible.Ecto.EventName.html
 Plausible.Event.WriteBuffer.html
 Plausible.Factory.html
 Plausible.Geo.html
@@ -219,8 +220,8 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_items-E7881B4D.js
-dist/sidebar_items-1DB9B812.js
+dist/search_items-1078E814.js
+dist/sidebar_items-DAB13CA3.js
 index.html
 readme.html
 search.html
