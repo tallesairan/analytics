@@ -171,6 +171,7 @@ PlausibleWeb.InvitationController.html
 PlausibleWeb.LastSeenPlug.html
 PlausibleWeb.LayoutView.html
 PlausibleWeb.PageController.html
+PlausibleWeb.PageView.html
 PlausibleWeb.RefInspector.html
 PlausibleWeb.RemoteIp.html
 PlausibleWeb.RequireAccountPlug.html
@@ -218,8 +219,8 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_items-08AB7134.js
-dist/sidebar_items-5E737BA3.js
+dist/search_items-E7881B4D.js
+dist/sidebar_items-1DB9B812.js
 index.html
 readme.html
 search.html
