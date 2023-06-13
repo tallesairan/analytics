@@ -37,6 +37,7 @@
       <% end %>
     <% else %>
       <div class="mt-4 dark:text-gray-100">No goals configured for this site yet</div>
+    <% end %>
   <% end %>
 
   <%= link("+ Add goal", to: "/#{URI.encode_www_form(@site.domain)}/goals/new", class: "button mt-6") %>
