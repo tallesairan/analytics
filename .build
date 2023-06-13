@@ -52,6 +52,9 @@ Plausible.DataMigration.html
 Plausible.Ecto.EventName.html
 Plausible.Event.WriteBuffer.html
 Plausible.Factory.html
+Plausible.Funnel.Step.html
+Plausible.Funnel.html
+Plausible.Funnels.html
 Plausible.Geo.html
 Plausible.Goal.html
 Plausible.Goals.html
@@ -115,6 +118,7 @@ Plausible.Stats.FilterParser.html
 Plausible.Stats.FilterSuggestions.html
 Plausible.Stats.Filters.html
 Plausible.Stats.Fragments.html
+Plausible.Stats.Funnel.html
 Plausible.Stats.Imported.html
 Plausible.Stats.Interval.html
 Plausible.Stats.Props.html
@@ -220,8 +224,8 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_items-5D16E66E.js
-dist/sidebar_items-58ECFA56.js
+dist/search_items-F506A5B1.js
+dist/sidebar_items-9B714FE8.js
 index.html
 readme.html
 search.html

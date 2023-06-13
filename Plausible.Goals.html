@@ -13,7 +13,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
-    <script src="dist/sidebar_items-58ECFA56.js"></script>
+    <script src="dist/sidebar_items-9B714FE8.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -141,6 +141,8 @@ Plausible
 
       </div>
 
+        <div class="summary-synopsis"><p>If a goal belongs to funnel(s), we need to inspect their number of steps.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -153,7 +155,7 @@ Plausible
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#for_site/1" translate="no">for_site(site)</a>
+        <a href="#for_site/2" translate="no">for_site(site, opts \\ [])</a>
 
       </div>
 
@@ -182,7 +184,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">create(site, params)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/goals.ex#L5" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/goals.ex#L8" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -204,7 +206,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">delete(id, site)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/goals.ex#L62" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/goals.ex#L87" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -214,7 +216,11 @@ Functions
 
   <section class="docstring">
 
-
+<p>If a goal belongs to funnel(s), we need to inspect their number of steps.</p><p>If it exceeds the minimum allowed (defined via <a href="Plausible.Funnel.html#min_steps/0"><code class="inline">Plausible.Funnel.min_steps/0</code></a>),
+the funnel will be reduced (i.e. a step associated with the goal to be deleted
+is removed), so that the minimum number of steps is preserved. This is done
+implicitly, by postgres, as per on_delete: :delete_all.</p><p>Otherwise, for associated funnel(s) consisting of minimum number steps only,
+funnel record(s) are removed completely along with the targeted goal.</p>
   </section>
 </section>
 <section class="detail" id="find_or_create/2">
@@ -226,7 +232,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">find_or_create(site, map)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/goals.ex#L14" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/goals.ex#L17" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -239,16 +245,18 @@ Functions
 
   </section>
 </section>
-<section class="detail" id="for_site/1">
+<section class="detail" id="for_site/2">
+
+    <span id="for_site/1"></span>
 
   <div class="detail-header">
-    <a href="#for_site/1" class="detail-link" title="Link to this function">
+    <a href="#for_site/2" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">for_site(site)</h1>
+    <h1 class="signature" translate="no">for_site(site, opts \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/goals.ex#L50" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/goals.ex#L53" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
