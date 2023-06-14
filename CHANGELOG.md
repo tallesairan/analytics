@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## v2.0.0 - 2023-06-14
+
 ### Added
 - Call to action for tracking Goal Conversions and an option to hide the section from the dashboard
 - Add support for `with_imported=true` in Stats API aggregate endpoint
