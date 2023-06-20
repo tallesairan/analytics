@@ -139,11 +139,13 @@ defmodule PlausibleWeb.Live.FunnelSettings.ComboBoxTest do
   end
 
   @step1_input "input#step-1"
+  @step2_input "input#step-2"
   describe "integration - live rendering" do
     setup [:create_user, :log_in, :create_site]
 
     test "search reacts to the input, the user types in", %{conn: conn, site: site} do
       setup_goals(site, ["Hello World", "Plausible", "Another World"])
+
       lv = get_liveview(conn, site)
 
       doc =
@@ -169,6 +171,7 @@ defmodule PlausibleWeb.Live.FunnelSettings.ComboBoxTest do
 
     test "selecting an option prefills input values", %{conn: conn, site: site} do
       {:ok, [_, _, g3]} = setup_goals(site, ["Hello World", "Plausible", "Another World"])
+
       lv = get_liveview(conn, site)
 
       doc =
@@ -196,6 +199,37 @@ defmodule PlausibleWeb.Live.FunnelSettings.ComboBoxTest do
              |> render()
              |> element_exists?(~s/input[type="text"][value="Another World"]/)
     end
+
+    test "selecting one option reduces suggestions in the other", %{conn: conn, site: site} do
+      setup_goals(site, ["Hello World", "Plausible", "Another World"])
+
+      lv = get_liveview(conn, site)
+
+      lv
+      |> element(@step1_input)
+      |> render_change(%{
+        "_target" => ["display-step-1"],
+        "display-step-1" => "another"
+      })
+
+      lv
+      |> element("li#dropdown-step-1-option-0 a")
+      |> render_click()
+
+      doc =
+        lv
+        |> element(@step2_input)
+        |> render_change(%{
+          "_target" => ["display-step-1"],
+          "display-step-1" => "another"
+        })
+
+      assert text_of_element(doc, "ul#dropdown-step-1 li") =~ "Another World"
+
+      assert text_of_element(doc, "ul#dropdown-step-2 li") =~ "Hello World"
+      assert text_of_element(doc, "ul#dropdown-step-2 li") =~ "Plausible"
+      refute text_of_element(doc, "ul#dropdown-step-2 li") =~ "Another World"
+    end
   end
 
   defp render_sample_component(options) do
@@ -214,8 +248,9 @@ defmodule PlausibleWeb.Live.FunnelSettings.ComboBoxTest do
     conn = assign(conn, :live_module, PlausibleWeb.Live.FunnelSettings)
     {:ok, lv, _html} = live(conn, "/#{site.domain}/settings/funnels")
     lv |> element(~s/button[phx-click="add-funnel"]/) |> render_click()
-    lv |> element("form") |> render_change(%{funnel: %{name: "My test funnel"}})
-    lv
+    assert form_view = find_live_child(lv, "funnels-form")
+    form_view |> element("form") |> render_change(%{funnel: %{name: "My test funnel"}})
+    form_view
   end
 
   defp setup_goals(site, goal_names) when is_list(goal_names) do
