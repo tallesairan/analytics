@@ -48,9 +48,7 @@ defmodule PlausibleWeb.Live.FunnelSettings.Form do
                   submit_name="funnel[steps][][goal_id]"
                   module={PlausibleWeb.Live.FunnelSettings.ComboBox}
                   id={"step-#{step_idx}"}
-                  options={
-                    exclude_selected_by_neighbours_of("step-#{step_idx}", @goals, @already_selected)
-                  }
+                  options={reject_alrady_selected("step-#{step_idx}", @goals, @already_selected)}
                 />
               </div>
 
@@ -190,18 +188,21 @@ defmodule PlausibleWeb.Live.FunnelSettings.Form do
     idx = String.to_integer(idx)
     step_ids = List.delete(socket.assigns.step_ids, idx)
     already_selected = socket.assigns.already_selected
+
     step_input_id = "step-#{idx}"
 
-    new_already_selected =
-      case Enum.find(already_selected, fn
-             {_goal_id, ^step_input_id} -> true
-             _ -> false
-           end) do
-        {selected_goal, _} ->
-          Map.delete(socket.assigns.already_selected, selected_goal)
+    selected_key =
+      Enum.find_value(already_selected, fn
+        {^step_input_id, goal_id} -> goal_id
+        _ -> false
+      end)
 
-        _ ->
-          already_selected
+    new_already_selected =
+      if selected_key do
+        IO.inspect(selected_key, label: :removing)
+        Map.delete(already_selected, selected_key)
+      else
+        already_selected
       end
 
     {:noreply, assign(socket, step_ids: step_ids, already_selected: new_already_selected)}
@@ -237,21 +238,17 @@ defmodule PlausibleWeb.Live.FunnelSettings.Form do
     end
   end
 
-  def handle_info({:selection_made, %{submit_value: submit_value, by: combo_box}}, socket) do
-    already_selected = Map.put(socket.assigns.already_selected, submit_value, combo_box)
+  def handle_info({:selection_made, %{submit_value: goal_id, by: combo_box}}, socket) do
+    already_selected = Map.put(socket.assigns.already_selected, combo_box, goal_id)
 
     {:noreply, assign(socket, already_selected: already_selected)}
   end
 
-  defp exclude_selected_by_neighbours_of(input_id, goals, already_selected) do
-    result =
-      goals
-      |> Enum.reject(fn {goal_id, _} ->
-        found? = Map.get(already_selected, goal_id)
-        found? && found? != input_id
-      end)
-
-    send_update(PlausibleWeb.Live.FunnelSettings.ComboBox, id: input_id, suggestions: result)
+  defp reject_alrady_selected(combo_box, goals, already_selected) do
+    IO.inspect(combo_box, label: :reject_alrady_selected_for)
+    IO.inspect(length(goals), label: :goals_all)
+    result = Enum.reject(goals, fn {goal_id, _} -> goal_id in Map.values(already_selected) end)
+    send_update(PlausibleWeb.Live.FunnelSettings.ComboBox, id: combo_box, suggestions: result)
     result
   end
 
