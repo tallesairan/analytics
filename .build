@@ -126,6 +126,7 @@ Plausible.Stats.Query.html
 Plausible.Stats.Timeseries.html
 Plausible.Stats.Util.html
 Plausible.Stats.html
+Plausible.Test.Support.HTML.html
 Plausible.TestUtils.html
 Plausible.Themes.html
 Plausible.Timezones.html
@@ -161,6 +162,8 @@ PlausibleWeb.BillingController.html
 PlausibleWeb.BillingView.html
 PlausibleWeb.CRMAuthPlug.html
 PlausibleWeb.Captcha.html
+PlausibleWeb.Components.Generic.html
+PlausibleWeb.Components.Site.Feature.html
 PlausibleWeb.ConnCase.html
 PlausibleWeb.ControllerHelpers.html
 PlausibleWeb.Email.html
@@ -175,6 +178,11 @@ PlausibleWeb.FormHelpers.html
 PlausibleWeb.InvitationController.html
 PlausibleWeb.LastSeenPlug.html
 PlausibleWeb.LayoutView.html
+PlausibleWeb.Live.Flash.html
+PlausibleWeb.Live.FunnelSettings.ComboBox.html
+PlausibleWeb.Live.FunnelSettings.Form.html
+PlausibleWeb.Live.FunnelSettings.List.html
+PlausibleWeb.Live.FunnelSettings.html
 PlausibleWeb.PageController.html
 PlausibleWeb.PageView.html
 PlausibleWeb.RefInspector.html
@@ -224,8 +232,8 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_items-EA6A2A6D.js
-dist/sidebar_items-D32CDA6C.js
+dist/search_items-93A705FD.js
+dist/sidebar_items-5B1AFCAC.js
 index.html
 readme.html
 search.html
