@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.29.4">
     <meta name="project" content="Plausible v0.0.1">
 
-    <title>Plausible.Workers.CleanEmailVerificationCodes — Plausible v0.0.1</title>
+    <title>PlausibleWeb.Plugs.RuntimeSessionAdapter — Plausible v0.0.1</title>
     <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
 
 
@@ -102,16 +102,23 @@ Plausible
 </button>
 
 
-    <a href="https://github.com/plausible/analytics/blob/main/lib/workers/clean_email_verification_codes.ex#L1" title="View Source" class="icon-action" rel="help">
+    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/plugs/runtime_session_adapter.ex#L1" title="View Source" class="icon-action" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
 
-  <span translate="no">Plausible.Workers.CleanEmailVerificationCodes</span> 
+  <span translate="no">PlausibleWeb.Plugs.RuntimeSessionAdapter</span> 
   <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
 
 </h1>
 
+
+  <section id="moduledoc">
+<p>A <a href="https://hexdocs.pm/plug/1.14.2/Plug.Session.html"><code class="inline">Plug.Session</code></a> adapter that allows configuration at runtime.
+Sadly, the plug being wrapped has no MFA option for dynamic
+configuration.</p><p>This is currently used so we can dynamically pass the :domain
+and have cookies planted across one root domain.</p>
+  </section>
 
 
 

@@ -185,6 +185,7 @@ PlausibleWeb.Live.FunnelSettings.List.html
 PlausibleWeb.Live.FunnelSettings.html
 PlausibleWeb.PageController.html
 PlausibleWeb.PageView.html
+PlausibleWeb.Plugs.RuntimeSessionAdapter.html
 PlausibleWeb.RefInspector.html
 PlausibleWeb.RemoteIp.html
 PlausibleWeb.RequireAccountPlug.html
@@ -232,8 +233,8 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_items-F5466024.js
-dist/sidebar_items-ED0BA69E.js
+dist/search_items-1465A13B.js
+dist/sidebar_items-E3E45D98.js
 index.html
 readme.html
 search.html
