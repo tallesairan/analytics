@@ -119,3 +119,66 @@ if (embedButton) {
     }
   })
 }
+
+
+(function() {
+  'use strict';
+  window.sortWebList = function(){
+
+      var sortedList = $('.relative.groups').toArray().sort(function(lhs, rhs){
+          return parseInt($(rhs).find("span.visitorNumber").text(),10) - parseInt($(lhs).find("span.visitorNumber").text(),10);
+      });
+
+     //console.log(sortedList);
+    $('.my-6.grid.grid-cols-1.gap-6').html(sortedList);
+  }
+  window.ReorderWebSites = function(){
+      var originalContent = $('.my-6.grid.grid-cols-1.gap-6');
+      var moddedContent = '';
+      var finalContent = '';
+      $('.relative.groups').each(function(i,e){
+          var currentGroupContent =  $(e);
+          var visitorsRaw = $(e).find('span.text-gray-800');
+          var vrt = visitorsRaw.find('b');
+
+          var visitors = visitorsRaw.find('b').text();
+          var visitorType = visitors.charAt(visitors.length - 1);
+          var finalVisitors = 0;
+          if(typeof visitorType == 'string'){
+              if(visitorType == 'M'){
+                  var visitorsReplaced = visitors.replace('M','');
+                  finalVisitors = visitorsReplaced.replace('.','')+'00000';
+              }
+              if(visitorType == 'k'){
+                  var visitorsReplaced = visitors.replace('k','');
+                  var finalParsedVisitors = visitorsReplaced.split('.');
+                  finalVisitors = finalParsedVisitors[0]+'000';
+              }
+
+               currentGroupContent.find('li').append('<span class="visitorNumber" style="display:none;">'+finalVisitors+'</span>');
+               finalContent = $(currentGroupContent).html();
+
+          }else{
+               finalContent = $(e).html();
+          }
+
+
+
+          moddedContent += '<div class="relative groups">'+finalContent+'</div>';
+
+
+          return;
+      });
+      if( originalContent.html(moddedContent) ){
+          window.sortWebList();
+      }
+  }
+  var script = document.createElement('script');
+  script.type = "text/javascript";
+  script.addEventListener("load", function(event) {
+
+      window.ReorderWebSites();
+  });
+  script.src = "https://code.jquery.com/jquery-3.6.0.min.js";
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
