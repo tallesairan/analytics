@@ -20,11 +20,14 @@ defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
     Plug.Session.call(conn, patch_cookie_domain(opts))
   end
 
+  #split domain parts if it's a subdomain
   defp patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts) do
+    domain_parts = String.split(PlausibleWeb.Endpoint.host(), ".")
+    domain = Enum.take(-2, domain_parts) |> Enum.join(".")
     Map.replace(
       runtime_opts,
       :cookie_opts,
-      Keyword.put_new(cookie_opts, :domain, PlausibleWeb.Endpoint.host())
+      Keyword.put_new(cookie_opts, :domain, domain)
     )
   end
 end

@@ -2,6 +2,7 @@ defmodule PlausibleWeb.Endpoint do
   use Sentry.PlugCapture
   use Phoenix.Endpoint, otp_app: :plausible
 
+  # The session cookie is used to store the user's session key.
   @session_options [
     store: :cookie,
     key: "_plausible_key",
