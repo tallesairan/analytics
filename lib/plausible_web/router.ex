@@ -8,7 +8,7 @@ defmodule PlausibleWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_secure_browser_headers
-    plug PlausibleWeb.Plugs.NoRobots
+
     plug PlausibleWeb.FirstLaunchPlug, redirect_to: "/register"
     plug PlausibleWeb.SessionTimeoutPlug, timeout_after_seconds: @two_weeks_in_seconds
     plug PlausibleWeb.AuthPlug
@@ -131,7 +131,7 @@ defmodule PlausibleWeb.Router do
   end
 
   scope "/", PlausibleWeb do
-    pipe_through [:browser, :csrf]
+    pipe_through [:browser]
 
     get "/register", AuthController, :register_form
     post "/register", AuthController, :register
