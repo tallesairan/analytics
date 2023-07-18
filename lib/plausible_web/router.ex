@@ -22,7 +22,15 @@ defmodule PlausibleWeb.Router do
   end
 
   pipeline :csrf do
-    plug :protect_from_forgery, allow_hosts: ["q3.xanalytics.vip", "*.xanalytics.vip"]
+    domain_parts = String.split(PlausibleWeb.Endpoint.host(), ".")
+    # if domain parts have more than 2 parts, we are in a subdomain and we need to remove the first part of the domain to set the cookie in the root domain (ex: analytics.com)
+    domain =
+      if length(domain_parts) > 2 do
+        domain_parts |> Enum.drop(1) |> Enum.join(".")
+      else
+        PlausibleWeb.Endpoint.host()
+      end
+    plug :protect_from_forgery, allow_hosts: [domain]
   end
 
   pipeline :api do

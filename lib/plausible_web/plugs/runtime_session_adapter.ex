@@ -20,9 +20,10 @@ defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
     Plug.Session.call(conn, patch_cookie_domain(opts))
   end
 
-  #split domain parts if it's a subdomain
+  # fixUp for self hosted with multiples subdomains / domains in same server
   defp patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts) do
     domain_parts = String.split(PlausibleWeb.Endpoint.host(), ".")
+    # if domain parts have more than 2 parts, we are in a subdomain and we need to remove the first part of the domain to set the cookie in the root domain (ex: analytics.com)
     domain =
       if length(domain_parts) > 2 do
         domain_parts |> Enum.drop(1) |> Enum.join(".")
