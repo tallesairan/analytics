@@ -360,7 +360,6 @@ defmodule PlausibleWeb.AuthController do
   def login(conn, %{"email" => email, "password" => password}) do
     with :ok <- check_ip_rate_limit(conn),
          {:ok, user} <- find_user(email),
-         :ok <- check_user_rate_limit(user),
          :ok <- check_password(user, password) do
       login_dest = get_session(conn, :login_dest) || Routes.site_path(conn, :index)
 
