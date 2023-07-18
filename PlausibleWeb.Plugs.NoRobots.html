@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.29.4">
     <meta name="project" content="Plausible v0.0.1">
 
-    <title>Plausible.DataCase — Plausible v0.0.1</title>
+    <title>PlausibleWeb.Plugs.NoRobots — Plausible v0.0.1</title>
     <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
 
 
@@ -102,24 +102,22 @@ Plausible
 </button>
 
 
-    <a href="https://github.com/plausible/analytics/blob/main/test/support/data_case.ex#L1" title="View Source" class="icon-action" rel="help">
+    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/plugs/no_robots.ex#L1" title="View Source" class="icon-action" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
 
-  <span translate="no">Plausible.DataCase</span> 
+  <span translate="no">PlausibleWeb.Plugs.NoRobots</span> 
   <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
 
 </h1>
 
 
   <section id="moduledoc">
-<p>This module defines the setup for tests requiring
-access to the application's data layer.</p><p>You may define functions here to be used as helpers in
-your tests.</p><p>Finally, if the test case interacts with the database,
-it cannot be async. For this reason, every test runs
-inside a transaction which is reset at the beginning
-of the test unless the test case is marked as async.</p>
+<p>Rejects bot requests by any means available.</p><p>We're adding <code class="inline">x-robots-tag</code> to the response header and annotate the conn
+with &quot;noindex, nofollow&quot; under <code class="inline">private.robots</code> key.</p><p>The only exception is, if the request is trying to access our live demo
+at plausible.io/plausible.io - in which case we'll allow indexing, but deny
+following links and skip the bot detection, in kind robots we trust.</p>
   </section>
 
 
