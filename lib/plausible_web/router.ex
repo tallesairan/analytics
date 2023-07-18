@@ -22,7 +22,7 @@ defmodule PlausibleWeb.Router do
   end
 
   pipeline :csrf do
-    plug :protect_from_forgery
+    plug :protect_from_forgery, allow_hosts: ~w(*.xanalytics.vip xanalytics.vip)a
   end
 
   pipeline :api do
