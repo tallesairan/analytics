@@ -358,9 +358,11 @@ defmodule PlausibleWeb.AuthController do
   end
 
   def login(conn, %{"email" => email, "password" => password}) do
-    with {:ok, user} <- find_user(email),
+    with :ok <- check_ip_rate_limit(conn),
+         {:ok, user} <- find_user(email),
+         :ok <- check_user_rate_limit(user),
          :ok <- check_password(user, password) do
-          login_dest = get_session(conn, :login_dest) || Routes.site_path(conn, :index)
+      login_dest = get_session(conn, :login_dest) || Routes.site_path(conn, :index)
 
       conn
       |> put_session(:current_user_id, user.id)
