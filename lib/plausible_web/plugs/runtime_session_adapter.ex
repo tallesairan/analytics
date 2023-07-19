@@ -17,23 +17,14 @@ defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
 
   @impl true
   def call(conn, opts) do
-    conn = patch_cookie_domain(conn, opts)
-    Plug.Session.call(conn, opts)
+    Plug.Session.call(conn, patch_cookie_domain(opts))
   end
 
-  defp patch_cookie_domain(conn, %{cookie_opts: cookie_opts} = runtime_opts) do
-    # Obter o valor do cabeçalho "host" da requisição
-    host_header = Plug.Conn.get_req_header(conn, "host")
-
-    domain = host_header
-
-    runtime_opts_with_domain =
-      Map.update!(runtime_opts, :cookie_opts, fn opts ->
-        Keyword.put_new(opts, :domain, domain)
-      end)
-
-    # Criar uma nova conexão com os valores atualizados em runtime_opts
-    %Plug.Conn{conn | private: runtime_opts_with_domain}
+  defp patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts) do
+    Map.replace(
+      runtime_opts,
+      :cookie_opts,
+      Keyword.put_new(cookie_opts, :domain, PlausibleWeb.Endpoint.host())
+    )
   end
-
 end

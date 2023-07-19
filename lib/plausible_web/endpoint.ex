@@ -71,11 +71,11 @@ defmodule PlausibleWeb.Endpoint do
     |> Keyword.fetch!(:websocket_url)
   end
 
-  def patch_session_opts() do
-    # `host()` provided by Phoenix.Endpoint's compilation hooks
-    # is used to inject the domain - this way we can authenticate
-    # websocket requests within single root domain, in case websocket_url()
-    # returns a ws{s}:// scheme (in which case SameSite=Lax is not applicable).
-    Keyword.put(@session_options, :domain, host())
+  def patch_session_opts(conn) do
+    # Extract the domain from the request headers
+    domain = Map.get(conn.req.headers, "host")
+
+    # Update the session options with the extracted domain
+    Keyword.put(@session_options, :domain, domain)
   end
 end
