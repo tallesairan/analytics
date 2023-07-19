@@ -1,4 +1,5 @@
 defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
+  import Plugs.Conn
   @moduledoc """
   A `Plug.Session` adapter that allows configuration at runtime.
   Sadly, the plug being wrapped has no MFA option for dynamic
@@ -20,12 +21,11 @@ defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
     Plug.Session.call(conn, patch_cookie_domain(opts))
   end
 
-  defp patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts) do
-
+  def patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts) do
     Map.replace(
       runtime_opts,
       :cookie_opts,
-      Keyword.put_new(cookie_opts, :domain, PlausibleWeb.Endpoint.custom_url())
+      Keyword.put_new(cookie_opts, :domain, PlausibleWeb.Endpoint.custom_host(conn, []))
     )
   end
 end

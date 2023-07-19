@@ -8,7 +8,7 @@ defmodule PlausibleWeb.AuthorizeStatsApiPlug do
   def init(options) do
     options
   end
-
+  # example_usage
   def call(conn, _opts) do
     with {:ok, token} <- get_bearer_token(conn),
          {:ok, api_key} <- find_api_key(token),

@@ -1,7 +1,5 @@
 defmodule PlausibleWeb.Endpoint do
-
   use Sentry.PlugCapture
-  use Plug.Conn
   use Phoenix.Endpoint, otp_app: :plausible
 
   # The session cookie is used to store the user's session key.
@@ -67,27 +65,20 @@ defmodule PlausibleWeb.Endpoint do
   plug CORSPlug
   plug PlausibleWeb.Router
 
-  def custom_url(conn) do
-    # Access the current connection from Plug.Conn.get_current/0
-
-    # Extract the domain from the request headers
-    domain = Map.get(conn.req.headers, "host")
-
-    # Return the domain
-    domain
-  end
-
   def websocket_url() do
     :plausible
     |> Application.fetch_env!(__MODULE__)
     |> Keyword.fetch!(:websocket_url)
   end
 
-  def patch_session_opts(conn) do
+  def patch_session_opts() do
     # Extract the domain from the request headers
-    domain = Map.get(conn.req.headers, "host")
 
     # Update the session options with the extracted domain
-    Keyword.put(@session_options, :domain, domain)
+    Keyword.put(@session_options, :domain, host())
+  end
+  def custom_host(conn, _params) do
+    current_domain = host(conn)
+    current_domain
   end
 end
