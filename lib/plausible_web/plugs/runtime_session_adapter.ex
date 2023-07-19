@@ -1,5 +1,4 @@
 defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
-  import Plugs.Conn
   @moduledoc """
   A `Plug.Session` adapter that allows configuration at runtime.
   Sadly, the plug being wrapped has no MFA option for dynamic
