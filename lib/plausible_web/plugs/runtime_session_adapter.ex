@@ -17,11 +17,11 @@ defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
 
   @impl true
   def call(conn, opts) do
-    Plug.Session.call(conn, patch_cookie_domain(opts))
+    conn = patch_cookie_domain(conn, opts)
+    Plug.Session.call(conn, opts)
   end
 
-  # fixUp for self hosted with multiples subdomains / domains in same server
-  defp patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts) do
+  defp patch_cookie_domain(conn, %{cookie_opts: cookie_opts} = runtime_opts) do
     # Obter o valor do cabeçalho "host" da requisição
     host_header = Plug.Conn.get_req_header(conn, "host")
 
