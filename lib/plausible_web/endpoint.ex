@@ -54,7 +54,10 @@ defmodule PlausibleWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
 
-  plug PlausibleWeb.Plugs.RuntimeSessionAdapter, @session_options
+  #plug PlausibleWeb.Plugs.RuntimeSessionAdapter, @session_options
+
+  Plug.Session.init(@session_options)
+  Plug.Session.call(conn, patch_cookie_domain(opts))
 
   socket "/live", Phoenix.LiveView.Socket,
     websocket: [
@@ -76,5 +79,12 @@ defmodule PlausibleWeb.Endpoint do
 
     # Update the session options with the extracted domain
     Keyword.put(@session_options, :domain, host())
+  end
+  def patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts) do
+    Map.replace(
+      runtime_opts,
+      :cookie_opts,
+      Keyword.put_new(cookie_opts, :domain, host())
+    )
   end
 end
