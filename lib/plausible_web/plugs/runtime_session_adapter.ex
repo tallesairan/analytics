@@ -28,13 +28,9 @@ defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
     domain = host_header
 
     runtime_opts_with_domain =
-      Map.update(
-        runtime_opts,
-        :cookie_opts,
-        fn opts ->
-          Keyword.put_new(opts, :domain, domain)
-        end
-      )
+      Map.update!(runtime_opts, :cookie_opts, fn opts ->
+        Keyword.put_new(opts, :domain, domain)
+      end)
 
     # Criar uma nova conexão com os valores atualizados em runtime_opts
     %Plug.Conn{conn | private: runtime_opts_with_domain}
