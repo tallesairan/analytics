@@ -57,7 +57,7 @@ defmodule PlausibleWeb.Endpoint do
   #plug PlausibleWeb.Plugs.RuntimeSessionAdapter, @session_options
 
   Plug.Session.init(@session_options)
-  Plug.Session.call(conn, patch_cookie_domain(opts))
+  Plug.Session.call(patch_cookie_domain(opts))
 
   socket "/live", Phoenix.LiveView.Socket,
     websocket: [
