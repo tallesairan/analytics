@@ -11,20 +11,20 @@ defmodule PlausibleWeb.Plugs.RuntimeSessionAdapter do
   @behaviour Plug
 
   @impl true
-  def init(opts,conn) do
+  def init(opts) do
     Plug.Session.init(opts)
   end
 
   @impl true
   def call(conn, opts) do
-    Plug.Session.call(conn, patch_cookie_domain(opts,conn))
+    Plug.Session.call(conn, patch_cookie_domain(opts))
   end
 
-  def patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts,conn) do
+  def patch_cookie_domain(%{cookie_opts: cookie_opts} = runtime_opts) do
     Map.replace(
       runtime_opts,
       :cookie_opts,
-      Keyword.put_new(cookie_opts, :domain, host(conn))
+      Keyword.put_new(cookie_opts, :domain, host())
     )
   end
 end

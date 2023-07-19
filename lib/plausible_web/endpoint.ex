@@ -54,7 +54,7 @@ defmodule PlausibleWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
 
-  plug PlausibleWeb.Plugs.RuntimeSessionAdapter, conn, @session_options
+  plug PlausibleWeb.Plugs.RuntimeSessionAdapter, @session_options
 
   socket "/live", Phoenix.LiveView.Socket,
     websocket: [
