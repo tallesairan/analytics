@@ -54,7 +54,7 @@ defmodule PlausibleWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
 
-  plug PlausibleWeb.Plugs.RuntimeSessionAdapter, @session_options
+  plug PlausibleWeb.Plugs.RuntimeSessionAdapter, conn, @session_options
 
   socket "/live", Phoenix.LiveView.Socket,
     websocket: [
@@ -76,9 +76,5 @@ defmodule PlausibleWeb.Endpoint do
 
     # Update the session options with the extracted domain
     Keyword.put(@session_options, :domain, host())
-  end
-  def custom_host(conn, _params) do
-    current_domain = host(conn)
-    current_domain
   end
 end
