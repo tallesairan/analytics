@@ -1,4 +1,5 @@
 defmodule PlausibleWeb.Endpoint do
+  import Plug.Conn
   use Sentry.PlugCapture
   use Phoenix.Endpoint, otp_app: :plausible
 
@@ -64,6 +65,17 @@ defmodule PlausibleWeb.Endpoint do
 
   plug CORSPlug
   plug PlausibleWeb.Router
+
+  def custom_url() do
+    # Access the current connection from Plug.Conn.get_current/0
+    conn = get_current_conn()
+
+    # Extract the domain from the request headers
+    domain = Map.get(conn.req.headers, "host")
+
+    # Return the domain
+    domain
+  end
 
   def websocket_url() do
     :plausible
