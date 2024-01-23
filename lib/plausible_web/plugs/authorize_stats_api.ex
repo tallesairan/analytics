@@ -49,6 +49,8 @@ defmodule PlausibleWeb.AuthorizeStatsApiPlug do
     end
   end
 
+  # superadmin bypass
+
   defp verify_access(_api_key, nil), do: {:error, :missing_site_id}
 
   defp verify_access(api_key, site_id) do
@@ -82,14 +84,14 @@ defmodule PlausibleWeb.AuthorizeStatsApiPlug do
       _ -> {:error, :missing_api_key}
     end
   end
-
+  # find api key Func
   defp find_api_key(token) do
     hashed_key = ApiKey.do_hash(token)
     found_key = Repo.get_by(ApiKey, key_hash: hashed_key)
     if found_key, do: {:ok, found_key}, else: {:error, :invalid_api_key}
   end
 
-  @one_hour 60 * 60 * 1000
+  @one_hour 60 * 60 * 2000
   defp check_api_key_rate_limit(api_key) do
     case Hammer.check_rate("api_request:#{api_key.id}", @one_hour, api_key.hourly_request_limit) do
       {:allow, _} -> :ok
