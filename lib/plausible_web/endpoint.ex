@@ -1,4 +1,5 @@
 defmodule PlausibleWeb.Endpoint do
+
   use Sentry.PlugCapture
   use Phoenix.Endpoint, otp_app: :plausible
 
@@ -54,7 +55,7 @@ defmodule PlausibleWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
 
-  plug PlausibleWeb.Plugs.RuntimeSessionAdapter, @session_options
+  plug Plug.Session, @session_options
 
   socket "/live", Phoenix.LiveView.Socket,
     websocket: [
@@ -71,14 +72,11 @@ defmodule PlausibleWeb.Endpoint do
     |> Keyword.fetch!(:websocket_url)
   end
 
-  def patch_session_opts() do
+  def patch_session_opts(conn) do
     # Extract the domain from the request headers
+    domain = Map.get(conn.req.headers, "host")
 
     # Update the session options with the extracted domain
-    Keyword.put(@session_options, :domain, host())
-  end
-  def custom_host(conn, _params) do
-    current_domain = host(conn)
-    current_domain
+    Keyword.put(@session_options, :domain, domain)
   end
 end
