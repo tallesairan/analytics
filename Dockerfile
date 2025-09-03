@@ -18,7 +18,7 @@ RUN mkdir /app
 WORKDIR /app
 
 # install build dependencies
-# ⚠️ Usar nodejs-current para pegar Node 20 (compatível com npm@11)
+# install build dependencies
 RUN apk add --no-cache \
     git \
     nodejs-current \
@@ -31,7 +31,7 @@ RUN apk add --no-cache \
     make \
     gcc \
     libc-dev \
-  && npm install -g npm@latest webpack
+  && npm install -g webpack
 
 COPY mix.exs ./ 
 COPY mix.lock ./ 
