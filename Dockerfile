@@ -18,12 +18,23 @@ RUN mkdir /app
 WORKDIR /app
 
 # install build dependencies
-RUN apk add --no-cache git nodejs yarn python3 npm ca-certificates wget gnupg make gcc libc-dev && \
-  npm install npm@latest -g && \
-  npm install -g webpack
+# ⚠️ Usar nodejs-current para pegar Node 20 (compatível com npm@11)
+RUN apk add --no-cache \
+    git \
+    nodejs-current \
+    npm \
+    yarn \
+    python3 \
+    ca-certificates \
+    wget \
+    gnupg \
+    make \
+    gcc \
+    libc-dev \
+  && npm install -g npm@latest webpack
 
-COPY mix.exs ./
-COPY mix.lock ./
+COPY mix.exs ./ 
+COPY mix.lock ./ 
 COPY config ./config
 RUN mix local.hex --force && \
   mix local.rebar --force && \
@@ -61,16 +72,15 @@ ENV BUILD_METADATA=$BUILD_METADATA
 ENV LANG=C.UTF-8
 
 RUN apk upgrade --no-cache
-
 RUN apk add --no-cache openssl ncurses libstdc++ libgcc ca-certificates
 
 COPY ./rel/docker-entrypoint.sh /entrypoint.sh
-
 RUN chmod a+x /entrypoint.sh && \
   adduser -h /app -u 1000 -s /bin/sh -D plausibleuser
 
 COPY --from=buildcontainer /app/_build/prod/rel/plausible /app
 RUN chown -R plausibleuser:plausibleuser /app
+
 USER plausibleuser
 WORKDIR /app
 ENV LISTEN_IP=0.0.0.0
